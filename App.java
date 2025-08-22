@@ -33,4 +33,24 @@ public class App {
         // demostrar el resultado 
         System.out.println("El promedio es " + promedio);
     }
+
+    public static void ejercicioArrayList() {
+        //Arraylist- Lista para almacenar nombres 
+        //Creamos un Arraylist para almacenar nombres
+        ArrayList<String> nombres = new ArrayList<>(); //se utiliza el mas menos para el arraylist
+        Scanner leer = new Scanner(System.in);
+        String entrada;
+        
+        System.out.println("Ingresa nombres (escribe 'salir' para terminar): ");
+        while (true){
+            entrada = leer.nextLine(); //leemos la entrada del usuario
+            if (entrada.equalsIgnoreCase("salir")) break; //si escribe salir termina
+            nombres.add(entrada); //Agregamos el nombre a la lista 
+        }
+        //mostrar los nombres ingresados 
+        System.out.println("Nombres ingresados");
+        for (String nombre : nombres){
+            System.out.println("El nombre ingresado fue: " + nombre);
+        }
+    }
 }
