@@ -53,4 +53,46 @@ public class App {
             System.out.println("El nombre ingresado fue: " + nombre);
         }
     }
+
+     public static void ejercicioLinkedList() {
+        //ejercicio linkelist- lista enlazada simple de tareas 
+        //creamos un likendlist para las tareas 
+        LinkedList<String> tareas= new LinkedList<>();
+        Scanner recibir = new Scanner(System.in);
+        int opcion;
+
+        //menu principal
+        do {
+            System.out.println("\n1. Agregar tarea \n2. Eliminar primera tarea \n3. Mostrar tareas \n4. salir ");
+            System.out.println("Elije una opcion: ");
+            opcion = recibir.nextInt(); //leemos la opcion del usuario
+            recibir.nextLine(); //Limpiamos el buffer
+
+            switch (opcion) {
+                case 1:
+                    //agregar una nueva tarea 
+                    System.out.println("escribe la tarea: ");
+                    String tarea = recibir.nextLine();
+                    tareas.add(tarea);
+                    break;
+
+                case 2: 
+                    //eliminar la primera qie si exite
+                    if (!tareas.isEmpty()){
+                        System.out.println("Tarea eliminada " + tareas.removeFirst());
+                    } else{
+                        System.out.println("No hay tarea para eliminar");
+                    }
+                    break;
+                
+                case 3:
+                    //mostar todas las tareas
+                    System.out.println("Lista de tareas: ");
+                    for (String t : tareas){
+                        System.out.println("-" + t);
+                    }
+                    break;
+            } 
+        } while (opcion !=4); //repetir hasta que el usuario leija salir
+    }
 }
