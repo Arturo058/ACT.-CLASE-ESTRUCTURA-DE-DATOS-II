@@ -95,4 +95,56 @@ public class App {
             } 
         } while (opcion !=4); //repetir hasta que el usuario leija salir
     }
+
+     public static void ejercicioHistorial() {
+        //lista doblemente enlazada-historial de navegacion
+        //creamos una lsita enlazada
+        LinkedList<String> historial = new LinkedList<>();
+
+        //usamos un iterador para poder movernos adelante y atras
+        ListIterator<String> iterador = historial.listIterator();
+
+        Scanner escanear = new Scanner(System.in);
+        String comando;
+        String actual = null; //pagina actual
+        
+        System.out.println("comando visitar [url], atras, delante, salir");
+
+        while (true) {
+            System.out.print("> ");
+            comando = escanear.nextLine();
+
+            if(comando.startsWith("Visitar")){
+                //Extraemos la URL despues del comando "visitar"
+                String url = comando.substring(8);
+                //nos aseguramos de estar al final antes de agregar una nueva pagina 
+                while (iterador.hasNext()) iterador.next();
+                iterador.add(url); //agregamos la nueva pagina en nuestro historial
+                actual =url;
+
+                System.out.println("Visitando: " + actual);
+
+            } else if (comando.equals("atras")){
+                //retroseder en el historial si es posible 
+                if (iterador.hasPrevious()){
+                    actual = iterador.previous();
+                    System.out.println("Retrocedio a: " + actual);
+                }
+                else {
+                    System.out.println("No hay paginas anteriores");
+                }
+
+            } else if (comando.equals("adelante")){
+                //avanzar en el historial si es posible
+                if (iterador.hasNext()){
+                    actual = iterador.next();
+                    System.out.println("Avanzó a: " + actual);
+                } else {
+                    System.out.println("No hay paginas siguientes");
+                }
+            } else if (comando.equalsIgnoreCase("salir")){
+                break;
+            }
+        }
+    }
 }
